@@ -1,22 +1,20 @@
 ﻿using System;
-using System.Data;
 using System.Text.RegularExpressions;
-using Microsoft.VisualBasic.FileIO;
-using System;
-using System.Drawing;
 
-public class User
+
+public class User // genel kullanıcı özelliklerini ve kimlik doğrulama işlevselliğini içerir.
 {
-    protected string Username;
-    protected string Password;
+    protected string Username; // iki korunan üye değişkeni 
+    protected string Password; 
 
-    public User(string username, string password)
+    public User(string username, string password) // nesne oluşturulduğunda çalışan metod
     {
         Username = username;
         Password = password;
     }
 
-    public bool Authenticate(string enteredUsername, string enteredPassword)// kimlik doğrulama 
+    public bool Authenticate(string enteredUsername, string enteredPassword)
+    // girilen kullanıcı adı ve şifreyi mevcut kullanıcı bilgileriyle karşılaştırarak kimlik doğrulama işlemini gerçekleştirir.
     {
         return Username == enteredUsername && Password == enteredPassword;
     }
@@ -25,6 +23,7 @@ public class User
 public class AdminUser : User
 {
     public AdminUser(string username, string password) : base(username, password)
+    // türetilen sınıfın üst sınıfının kurucu metodunu çağırmak amacıyla kullanılır.
     {
     }
     // Gerekirse admin kullanıcılara özgü ek metodlar veya özellikler ekleyebilirsiniz.
@@ -33,6 +32,7 @@ public class AdminUser : User
 public class CustomerUser : User
 {
     public CustomerUser(string username, string password) : base(username, password)
+    // türetilen sınıfın üst sınıfının kurucu metodunu çağırmak amacıyla kullanılır.
     {
     }
     // Gerekirse admin kullanıcılara özgü ek metodlar veya özellikler ekleyebilirsiniz.
